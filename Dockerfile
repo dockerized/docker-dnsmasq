@@ -1,12 +1,8 @@
-FROM alpine
+FROM alpine:latest
 
 MAINTAINER Tony.Shao
 
-RUN set -xe \
-    && apk add --no-cache dnsmasq \
-    && echo "conf-dir=/etc/dnsmasq.d/,*.conf" >> /etc/dnsmasq.conf
-
-VOLUME /etc/dnsmasq.d
+RUN apk add --no-cache dnsmasq
 
 EXPOSE 53/tcp \
        53/udp \
