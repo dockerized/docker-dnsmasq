@@ -1,9 +1,20 @@
-dnsmasq:
-  image: xiocode/dnsmasq
-  ports:
-    - "53:53/tcp"
-    - "53:53/udp"
-    - "67:67/udp"
-  cap_add:
-    - NET_ADMIN
-  restart: always
+version: '2'
+services:
+  shadowsocks:
+    image: easypi/shadowsocks-libev
+    ports:
+      - "10010:8388/tcp"
+      - "10010:8388/udp"
+    environment:
+      - PASSWORD=299792458
+      - METHOD=chacha20
+    restart: always
+  dnsmasq:
+    image: xiocode/dnsmasq
+    ports:
+      - "53:53/tcp"
+      - "53:53/udp"
+      - "67:67/udp"
+    cap_add:
+      - NET_ADMIN
+    restart: always
